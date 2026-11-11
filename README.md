@@ -1,10 +1,10 @@
-# 🧱 Claude & Codex: modo albañil mexicano
+# 🧱 Claude, Codex & Cursor: modo albañil mexicano
 
 «Arre, maistro. Vamos a dejar ese código bien aplomado».
 
-Una skill para que **Claude Code y Codex** hablen con el ingenio y el trato de un maestro de obra mexicano: expresiones coloquiales, analogías de construcción y humor ligero, conservando la precisión técnica.
+Una skill para que **Claude Code, Codex y Cursor** hablen con el ingenio y el trato de un maestro de obra mexicano: expresiones coloquiales, analogías de construcción y humor ligero, conservando la precisión técnica.
 
-La misma carpeta `skills/albanil-mode` funciona en ambos agentes. No requiere dependencias ni ejecuta scripts.
+La misma carpeta `skills/albanil-mode` funciona en los tres agentes. No requiere dependencias ni ejecuta scripts.
 
 ## Instalación
 
@@ -54,6 +54,27 @@ Abre una nueva sesión de Codex e invócala:
 $albanil-mode Explícame este proyecto, maistro.
 ```
 
+### Cursor — todos tus proyectos
+
+Desde la raíz de este repo:
+
+```sh
+mkdir -p "$HOME/.cursor/skills"
+cp -R skills/albanil-mode "$HOME/.cursor/skills/"
+```
+
+Reinicia Cursor. En el chat de Agent, escribe `/` y selecciona `albanil-mode`:
+
+```text
+/albanil-mode Explícame este proyecto, maistro.
+```
+
+Para mantener la skill en contexto durante toda la sesión, úsala como **Custom Mode** desde el selector de skills. Una invocación normal con `/` la adjunta a un solo mensaje.
+
+Cursor también descubre skills en `~/.agents/skills/` y `.agents/skills/`. Si ya usaste la instalación de Codex, no necesitas otra copia para Cursor local.
+
+Las skills globales de tu máquina no se copian automáticamente a entornos remotos. Para Cloud Agents, puedes sincronizar las de `~/.cursor/skills/` desde **Settings → Agents → Sync Skills for Cloud Agents**, o incluir la skill en el proyecto.
+
 ### Solo en un proyecto
 
 En lugar de instalar globalmente, copia la carpeta dentro del proyecto de destino. Sustituye `/ruta/a/tu/proyecto`:
@@ -66,6 +87,10 @@ cp -R skills/albanil-mode /ruta/a/tu/proyecto/.claude/skills/
 # Codex
 mkdir -p /ruta/a/tu/proyecto/.agents/skills
 cp -R skills/albanil-mode /ruta/a/tu/proyecto/.agents/skills/
+
+# Cursor
+mkdir -p /ruta/a/tu/proyecto/.cursor/skills
+cp -R skills/albanil-mode /ruta/a/tu/proyecto/.cursor/skills/
 ```
 
 Elige instalación global o por proyecto para cada agente; evita mantener copias duplicadas con el mismo nombre. Si ya existe una carpeta `albanil-mode` personalizada en el destino, respáldala antes de copiar.
@@ -95,6 +120,7 @@ Edita [`skills/albanil-mode/SKILL.md`](skills/albanil-mode/SKILL.md) para ajusta
 
 ## Referencias
 
+- [Skills en Cursor](https://cursor.com/docs/skills): instalación, invocación y Custom Modes.
 - [Skills en Claude Code](https://code.claude.com/docs/en/skills): formato, rutas e invocación con `/`.
 - [Instalación de skills para Codex y Claude Code — OpenAI Docs](https://developers.openai.com/api/reference/cli): rutas globales y por proyecto.
 - [Construir skills — OpenAI Docs](https://learn.chatgpt.com/docs/build-skills): estructura de una skill.
